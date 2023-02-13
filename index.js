@@ -22,6 +22,7 @@ class LinkedList {
   }
 
   /// append() - для добавления нового элемента в список
+  /// O(1)
   append(value) {
     const newNode = new LinkedListNode(value);
 
@@ -40,6 +41,7 @@ class LinkedList {
   }
 
   /// prepend - добавляет элемент в начало списка
+  /// O(1)
   prepend(value) {
     const newNode = new LinkedListNode(value, this.head);
 
@@ -52,6 +54,7 @@ class LinkedList {
     return this;
   }
 
+  /// O(n)
   find(value) {
     if (!this.head) {
       return null;
@@ -70,6 +73,7 @@ class LinkedList {
     return null;
   }
 
+  /// O(n)
   delete(value) {
     if (!this.head) {
       return null;
@@ -104,6 +108,7 @@ class LinkedList {
     return deletedNode;
   }
 
+  /// O(n)
   insertAfter(value, prevNode) {
     if (prevNode == null) {
       return this;
@@ -122,6 +127,7 @@ class LinkedList {
     return this;
   }
 
+  /// O(n)
   get toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -134,6 +140,7 @@ class LinkedList {
     return nodes;
   }
 
+  /// O(n)
   get toString() {
     return this.toArray.map((node) => node.toString);
   }
