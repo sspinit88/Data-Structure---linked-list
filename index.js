@@ -70,6 +70,40 @@ class LinkedList {
     return null;
   }
 
+  delete(value) {
+    if (!this.head) {
+      return null;
+    }
+
+    let deletedNode = null;
+
+    while (this.head && this.head.value === value) {
+      deletedNode = this.head;
+      this.head = this.head.next;
+    }
+
+    let currentNode = this.head;
+
+    if (currentNode !== null) {
+      while (currentNode.next) {
+        if (currentNode.next.value === value) {
+          deletedNode = currentNode.next;
+          /// ссылку меняем через один
+          currentNode.next = currentNode.next.next;
+        } else {
+          currentNode = currentNode.next;
+        }
+      }
+    }
+
+    /// переписываем хвост
+    if (this.tail?.value === value) {
+      this.tail = currentNode;
+    }
+
+    return deletedNode;
+  }
+
   get toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -88,9 +122,18 @@ class LinkedList {
 }
 
 const list = new LinkedList();
-const r = list.append('a').append('b').append('c').prepend('prepend');
-const f = list.find('c');
 
+const r = list
+  .append('a')
+  .append('b')
+  .append('c')
+  .append('d')
+  .prepend('prepend');
+
+const f = list.find('c');
+const d = list.delete('d');
+
+console.log('d:', d);
 console.log('f:', f);
 console.log(r.toString);
 console.log(r.toArray);
