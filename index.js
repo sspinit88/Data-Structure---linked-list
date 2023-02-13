@@ -39,6 +39,19 @@ class LinkedList {
     return this;
   }
 
+  /// prepend - добавляет элемент в начало списка
+  prepend(value) {
+    const newNode = new LinkedListNode(value, this.head);
+
+    this.head = newNode;
+
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+
+    return this;
+  }
+
   get toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -52,11 +65,12 @@ class LinkedList {
   }
 
   get toString() {
-    return this.toArray.map(node => node.toString);
+    return this.toArray.map((node) => node.toString);
   }
 }
 
 const list = new LinkedList();
-const r = list.append('a').append('b').append('c');
+const r = list.append('a').append('b').append('c').prepend('prepend');
 
 console.log(r.toString);
+console.log(r.toArray);
