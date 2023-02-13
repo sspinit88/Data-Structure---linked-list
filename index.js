@@ -52,6 +52,24 @@ class LinkedList {
     return this;
   }
 
+  find(value) {
+    if (!this.head) {
+      return null;
+    }
+
+    let currentNode = this.head;
+
+    while (currentNode) {
+      if (currentNode.value === value) {
+        return currentNode;
+      }
+
+      currentNode = currentNode.next;
+    }
+
+    return null;
+  }
+
   get toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -71,6 +89,8 @@ class LinkedList {
 
 const list = new LinkedList();
 const r = list.append('a').append('b').append('c').prepend('prepend');
+const f = list.find('c');
 
+console.log('f:', f);
 console.log(r.toString);
 console.log(r.toArray);
