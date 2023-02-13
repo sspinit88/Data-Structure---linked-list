@@ -104,6 +104,24 @@ class LinkedList {
     return deletedNode;
   }
 
+  insertAfter(value, prevNode) {
+    if (prevNode == null) {
+      return this;
+    }
+
+    const newNode = new LinkedListNode(value);
+
+    newNode.next = prevNode.next;
+
+    prevNode.next = newNode;
+
+    if (newNode.next === null) {
+      this.tail = newNode;
+    }
+
+    return this;
+  }
+
   get toArray() {
     const nodes = [];
     let currentNode = this.head;
@@ -132,6 +150,7 @@ const r = list
 
 const f = list.find('c');
 const d = list.delete('d');
+const ia = list.insertAfter('x', list.find('a'));
 
 console.log('d:', d);
 console.log('f:', f);
