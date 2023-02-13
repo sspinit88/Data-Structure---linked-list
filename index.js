@@ -6,6 +6,10 @@ class LinkedListNode {
     this.value = value;
     this.next = next;
   }
+
+  get toString() {
+    return `${this.value}`;
+  }
 }
 
 class LinkedList {
@@ -34,9 +38,25 @@ class LinkedList {
 
     return this;
   }
+
+  get toArray() {
+    const nodes = [];
+    let currentNode = this.head;
+
+    while (currentNode) {
+      nodes.push(currentNode);
+      currentNode = currentNode.next;
+    }
+
+    return nodes;
+  }
+
+  get toString() {
+    return this.toArray.map(node => node.toString);
+  }
 }
 
 const list = new LinkedList();
 const r = list.append('a').append('b').append('c');
 
-console.log(r);
+console.log(r.toString);
